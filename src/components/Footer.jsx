@@ -47,7 +47,7 @@ function Footer() {
 
             {/* LinkedIn */}
             <a
-              href="#"
+              href="https://www.linkedin.com/in/nosa-orhue-osasofure-jeffrey-43332530a/"
               aria-label="LinkedIn"
               className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 transition hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-600 dark:border-white/[0.07] dark:text-slate-400 dark:hover:border-indigo-500/30 dark:hover:bg-[#1C1F22] dark:hover:text-indigo-400"
             >

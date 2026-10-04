@@ -1,11 +1,15 @@
 import { useState } from "react";
+
 import { motion, AnimatePresence } from "framer-motion";
+
 import {
     ArrowUpRight,
+    ArrowRight,
     X,
     ChevronLeft,
     ChevronRight,
 } from "lucide-react";
+
 import { FaGithub } from "react-icons/fa";
 
 const projects = [
@@ -21,7 +25,7 @@ const projects = [
             "REST APIs",
             "Responsive Design",
         ],
-        status: "Completed",
+        status: "In Progress",
         github: "https://github.com/JeffJG-maker/My-Church-Website",
         live: "https://lfcwinnersiguosa.netlify.app/",
         cover: "/projects/church/home.png",
@@ -62,7 +66,7 @@ const projects = [
             "CSS",
             "Responsive Design",
         ],
-        status: "Completed",
+        status: "In Progress",
         github: "https://github.com/JeffJG-maker/furniture-store-jg",
         live: "https://furniture-store-jg.netlify.app/",
         cover: "/projects/furniture/home.png",
@@ -102,6 +106,7 @@ const projects = [
 function Projects() {
     const [selectedProject, setSelectedProject] = useState(null);
     const [currentImage, setCurrentImage] = useState(0);
+    const [showAllProjects, setShowAllProjects] = useState(false);
 
     const openProject = (project) => {
         setSelectedProject(project);
@@ -156,9 +161,20 @@ function Projects() {
                     </motion.div>
 
                     {/* Project Cards */}
-                    <div className="grid gap-10 lg:grid-cols-2">
-                        {projects.map((project, index) => (
+                    <motion.div
+                        layout
+                        className="grid gap-10 lg:grid-cols-2"
+                        transition={{
+                            layout: {
+                                duration: 0.45,
+                                ease: "easeInOut",
+                            },
+                        }}
+                    >
+                        {/* First Two Projects */}
+                        {projects.slice(0, 2).map((project, index) => (
                             <motion.article
+                                layout
                                 key={project.id}
                                 initial={{ opacity: 0, y: 40 }}
                                 whileInView={{ opacity: 1, y: 0 }}
@@ -247,7 +263,151 @@ function Projects() {
                                 </div>
                             </motion.article>
                         ))}
-                    </div>
+
+                        {/* Additional Projects */}
+                        <AnimatePresence>
+                            {showAllProjects &&
+                                projects.slice(2).map((project, index) => (
+                                    <motion.article
+                                        layout
+                                        key={project.id}
+                                        initial={{
+                                            opacity: 0,
+                                            y: 25,
+                                            scale: 0.97,
+                                        }}
+                                        animate={{
+                                            opacity: 1,
+                                            y: 0,
+                                            scale: 1,
+                                        }}
+                                        exit={{
+                                            opacity: 0,
+                                            y: -20,
+                                            scale: 0.97,
+                                        }}
+                                        transition={{
+                                            duration: 0.4,
+                                            delay: index * 0.06,
+                                            layout: {
+                                                duration: 0.45,
+                                                ease: "easeInOut",
+                                            },
+                                        }}
+                                        className="group overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/[0.07] dark:bg-[#181B1E]"
+                                    >
+                                        {/* Project Preview */}
+                                        <button
+                                            type="button"
+                                            onClick={() => openProject(project)}
+                                            className="relative block w-full overflow-hidden text-left"
+                                        >
+                                            <div className="aspect-[16/10] overflow-hidden">
+                                                <img
+                                                    src={project.cover}
+                                                    alt={project.title}
+                                                    className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                                                />
+                                            </div>
+
+                                            {/* Hover Overlay */}
+                                            <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 transition duration-300 group-hover:opacity-100">
+                                                <span className="m-6 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-slate-900">
+                                                    View Project
+                                                </span>
+                                            </div>
+                                        </button>
+
+                                        {/* Project Information */}
+                                        <div className="p-7">
+                                            <div className="mb-4 flex items-center justify-between gap-4">
+                                                <span className="text-sm font-medium text-indigo-600 dark:text-indigo-400">
+                                                    {project.category}
+                                                </span>
+
+                                                <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">
+                                                    {project.status}
+                                                </span>
+                                            </div>
+
+                                            <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
+                                                {project.title}
+                                            </h3>
+
+                                            <p className="mt-4 leading-7 text-slate-600 dark:text-slate-400">
+                                                {project.description}
+                                            </p>
+
+                                            <div className="mt-6 flex flex-wrap gap-2">
+                                                {project.technologies.map((technology) => (
+                                                    <span
+                                                        key={technology}
+                                                        className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 dark:border-white/[0.07] dark:bg-[#1C1F22] dark:text-slate-300"
+                                                    >
+                                                        {technology}
+                                                    </span>
+                                                ))}
+                                            </div>
+
+                                            <div className="mt-7 flex items-center gap-6">
+                                                <button
+                                                    type="button"
+                                                    onClick={() => openProject(project)}
+                                                    className="inline-flex items-center gap-2 text-sm font-semibold text-slate-900 transition hover:text-indigo-600 dark:text-white dark:hover:text-indigo-400"
+                                                >
+                                                    View Case Study
+                                                    <ArrowUpRight size={17} />
+                                                </button>
+
+                                                <a
+                                                    href={project.github}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 transition hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
+                                                >
+                                                    <FaGithub size={17} />
+                                                    GitHub
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </motion.article>
+                                ))}
+                        </AnimatePresence>
+                    </motion.div>
+
+                    {/* See More / See Less */}
+                    {projects.length > 2 && (
+                        <motion.div
+                            layout
+                            initial={{ opacity: 0, y: 15 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5 }}
+                            className="mt-12 flex justify-center"
+                        >
+                            <button
+                                type="button"
+                                onClick={() =>
+                                    setShowAllProjects((prev) => !prev)
+                                }
+                                className="group inline-flex items-center overflow-hidden rounded-full bg-gradient-to-r from-indigo-700 via-indigo-600 to-blue-500 p-1 text-sm font-bold tracking-[0.12em] text-white shadow-[0_6px_16px_rgba(49,46,129,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(49,46,129,0.45)]"
+                            >
+                                <span className="px-8 py-2.5">
+                                    {showAllProjects ? "SEE LESS" : "SEE MORE"}
+                                </span>
+
+                                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-black/15 transition-all duration-300 group-hover:bg-black/25">
+                                    <ArrowRight
+                                        size={17}
+                                        className={`transition-transform duration-300 ${showAllProjects
+                                                ? "rotate-180"
+                                                : "group-hover:translate-x-0.5"
+                                            }`}
+                                    />
+                                </span>
+                            </button>
+                        </motion.div>
+                    )}
                 </div>
             </section>
 
@@ -342,14 +502,16 @@ function Projects() {
                                         </h4>
 
                                         <div className="mt-4 flex flex-wrap gap-2">
-                                            {selectedProject.technologies.map((technology) => (
-                                                <span
-                                                    key={technology}
-                                                    className="rounded-full bg-slate-100 px-3 py-2 text-xs font-medium text-slate-700 dark:bg-[#1C1F22] dark:text-slate-300"
-                                                >
-                                                    {technology}
-                                                </span>
-                                            ))}
+                                            {selectedProject.technologies.map(
+                                                (technology) => (
+                                                    <span
+                                                        key={technology}
+                                                        className="rounded-full bg-slate-100 px-3 py-2 text-xs font-medium text-slate-700 dark:bg-[#1C1F22] dark:text-slate-300"
+                                                    >
+                                                        {technology}
+                                                    </span>
+                                                )
+                                            )}
                                         </div>
                                     </div>
 
@@ -360,23 +522,25 @@ function Projects() {
                                         </h4>
 
                                         <div className="mt-4 grid grid-cols-3 gap-2">
-                                            {selectedProject.screenshots.map((screen, index) => (
-                                                <button
-                                                    type="button"
-                                                    key={screen.src}
-                                                    onClick={() => setCurrentImage(index)}
-                                                    className={`overflow-hidden rounded-lg border-2 transition ${currentImage === index
-                                                            ? "border-indigo-600"
-                                                            : "border-transparent hover:border-slate-300 dark:hover:border-slate-600"
-                                                        }`}
-                                                >
-                                                    <img
-                                                        src={screen.src}
-                                                        alt={screen.label}
-                                                        className="aspect-video w-full object-cover"
-                                                    />
-                                                </button>
-                                            ))}
+                                            {selectedProject.screenshots.map(
+                                                (screen, index) => (
+                                                    <button
+                                                        type="button"
+                                                        key={screen.src}
+                                                        onClick={() => setCurrentImage(index)}
+                                                        className={`overflow-hidden rounded-lg border-2 transition ${currentImage === index
+                                                                ? "border-indigo-600"
+                                                                : "border-transparent hover:border-slate-300 dark:hover:border-slate-600"
+                                                            }`}
+                                                    >
+                                                        <img
+                                                            src={screen.src}
+                                                            alt={screen.label}
+                                                            className="aspect-video w-full object-cover"
+                                                        />
+                                                    </button>
+                                                )
+                                            )}
                                         </div>
                                     </div>
 

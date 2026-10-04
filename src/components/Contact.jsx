@@ -102,14 +102,14 @@ function Contact() {
                     </p>
                 </motion.div>
 
-                <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+                <div className="grid min-w-0 gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
                     {/* Contact Information */}
                     <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.2 }}
                         transition={{ duration: 0.6 }}
-                        className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-white/[0.07] dark:bg-[#181B1E]"
+                        className="min-w-0 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-white/[0.07] dark:bg-[#181B1E]"
                     >
                         <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-medium text-emerald-700 dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-400">
                             <span className="h-2 w-2 rounded-full bg-emerald-500" />
@@ -182,7 +182,7 @@ function Contact() {
                                 </a>
 
                                 <a
-                                    href="#"
+                                    href="https://www.linkedin.com/in/nosa-orhue-osasofure-jeffrey-43332530a/"
                                     aria-label="LinkedIn"
                                     className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 transition hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-600 dark:border-white/[0.07] dark:text-slate-400 dark:hover:border-indigo-500/30 dark:hover:bg-[#1C1F22] dark:hover:text-indigo-400"
                                 >
@@ -194,16 +194,16 @@ function Contact() {
 
                     {/* Contact Form */}
                     <motion.form
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.2 }}
                         transition={{ duration: 0.6 }}
                         onSubmit={handleSubmit}
-                        className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-white/[0.07] dark:bg-[#181B1E]"
+                        className="min-w-0 max-w-full rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-white/[0.07] dark:bg-[#181B1E]"
                     >
-                        <div className="grid gap-6 sm:grid-cols-2">
+                        <div className="grid min-w-0 gap-6 sm:grid-cols-2">
                             {/* Name */}
-                            <div>
+                            <div className="min-w-0">
                                 <label
                                     htmlFor="name"
                                     className="text-sm font-semibold text-slate-900 dark:text-white"
@@ -219,12 +219,12 @@ function Contact() {
                                     onChange={handleChange}
                                     placeholder="Your name"
                                     required
-                                    className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 dark:border-white/[0.07] dark:bg-[#1C1F22] dark:text-white"
+                                    className="mt-2 w-full min-w-0 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 dark:border-white/[0.07] dark:bg-[#1C1F22] dark:text-white"
                                 />
                             </div>
 
                             {/* Email */}
-                            <div>
+                            <div className="min-w-0">
                                 <label
                                     htmlFor="email"
                                     className="text-sm font-semibold text-slate-900 dark:text-white"
@@ -240,13 +240,13 @@ function Contact() {
                                     onChange={handleChange}
                                     placeholder="your@email.com"
                                     required
-                                    className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 dark:border-white/[0.07] dark:bg-[#1C1F22] dark:text-white"
+                                    className="mt-2 w-full min-w-0 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 dark:border-white/[0.07] dark:bg-[#1C1F22] dark:text-white"
                                 />
                             </div>
                         </div>
 
                         {/* Subject */}
-                        <div className="mt-6">
+                        <div className="mt-6 min-w-0">
                             <label
                                 htmlFor="subject"
                                 className="text-sm font-semibold text-slate-900 dark:text-white"
@@ -262,12 +262,12 @@ function Contact() {
                                 onChange={handleChange}
                                 placeholder="What would you like to discuss?"
                                 required
-                                className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 dark:border-white/[0.07] dark:bg-[#1C1F22] dark:text-white"
+                                className="mt-2 w-full min-w-0 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 dark:border-white/[0.07] dark:bg-[#1C1F22] dark:text-white"
                             />
                         </div>
 
                         {/* Message */}
-                        <div className="mt-6">
+                        <div className="mt-6 min-w-0">
                             <label
                                 htmlFor="message"
                                 className="text-sm font-semibold text-slate-900 dark:text-white"
@@ -283,7 +283,7 @@ function Contact() {
                                 onChange={handleChange}
                                 placeholder="Tell me a little about your project..."
                                 required
-                                className="mt-2 w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 dark:border-white/[0.07] dark:bg-[#1C1F22] dark:text-white"
+                                className="mt-2 w-full min-w-0 resize-none rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 dark:border-white/[0.07] dark:bg-[#1C1F22] dark:text-white"
                             />
                         </div>
 
