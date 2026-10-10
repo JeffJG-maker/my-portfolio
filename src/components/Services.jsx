@@ -109,30 +109,6 @@ function Services() {
                     })}
                 </div>
 
-                {/* CTA */}
-                <motion.div
-                    initial={{ opacity: 0, y: 25 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    className="mt-14 rounded-3xl border border-slate-200 bg-slate-50 p-8 text-center dark:border-white/[0.07] dark:bg-[#181B1E]"
-                >
-                    <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
-                        Have a project in mind?
-                    </h3>
-
-                    <p className="mx-auto mt-3 max-w-xl leading-7 text-slate-600 dark:text-slate-400">
-                        Let's turn your idea into a functional and polished web
-                        experience.
-                    </p>
-
-                    <a
-                        href="#contact"
-                        className="mt-6 inline-flex items-center justify-center rounded-xl bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-indigo-600 dark:bg-white dark:text-slate-900 dark:hover:bg-indigo-500 dark:hover:text-white"
-                    >
-                        Let's Talk
-                    </a>
-                </motion.div>
             </div>
         </section>
     );
