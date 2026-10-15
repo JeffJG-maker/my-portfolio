@@ -11,7 +11,7 @@ function Navbar({ darkMode, setDarkMode }) {
         { name: "Skills", href: "#skills" },
         { name: "Projects", href: "#projects" },
         { name: "Experience", href: "#experience" },
-        { name: "Services", href: "#services" },
+        // { name: "Services", href: "#services" },
         // { name: "Contact", href: "#contact" },
     ];
 
@@ -27,7 +27,7 @@ function Navbar({ darkMode, setDarkMode }) {
                     className="group flex items-center gap-3"
                 >
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-sm font-bold text-slate-950 transition-transform duration-300 group-hover:rotate-6">
-                        <img src="/nj-favicon.svg" alt="" className="h-full w-full"/>
+                        <img src="/nj-favicon.svg" alt="" className="h-full w-full" />
                     </div>
 
                     <div>
@@ -111,3 +111,4 @@ function Navbar({ darkMode, setDarkMode }) {
 }
 
 export default Navbar;
+

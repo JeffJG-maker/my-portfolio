@@ -11,7 +11,7 @@ const Hero = () => {
     return (
         <section
             id="home"
-            className="relative flex h-[90vh] items-center overflow-hidden bg-[#111315] pt-20 text-white"
+            className="relative flex lg:h-[90vh] md:h-[70vh] items-center overflow-hidden bg-[#111315] pt-20 text-white"
         >
             {/* Background glow */}
             <div className="pointer-events-none absolute left-[10%] top-[15%] h-72 w-72 rounded-full bg-indigo-600/10 blur-3xl" />
