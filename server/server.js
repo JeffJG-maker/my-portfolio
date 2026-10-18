@@ -1,3 +1,4 @@
+
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -21,6 +22,7 @@ const transporter = nodemailer.createTransport({
 
 app.get("/", (req, res) => {
   res.json({
+    success: true,
     message: "Portfolio API is running successfully.",
   });
 });
@@ -29,7 +31,12 @@ app.post("/api/contact", async (req, res) => {
   try {
     const { name, email, subject, message } = req.body;
 
-    if (!name || !email || !subject || !message) {
+    if (
+      !name?.trim() ||
+      !email?.trim() ||
+      !subject?.trim() ||
+      !message?.trim()
+    ) {
       return res.status(400).json({
         success: false,
         message: "Please fill in all fields.",
@@ -40,30 +47,28 @@ app.post("/api/contact", async (req, res) => {
       from: process.env.GMAIL_USER,
       to: process.env.GMAIL_USER,
       replyTo: email,
-      subject: `Portfolio Contact: ${subject}`,
-      text: `
-Name: ${name}
+      subject: `Portfolio Contact: ${subject.trim()}`,
+      text: `Name: ${name}
 Email: ${email}
 
 Message:
-${message}
-      `,
+${message}`,
     });
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: "Message sent successfully!",
     });
   } catch (error) {
-    console.error("Email error:", error);
+    console.error("Email error:", error.message);
 
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
-      message: "Something went wrong. Please try again.",
+      message: "Unable to send your message. Please try again.",
     });
   }
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
