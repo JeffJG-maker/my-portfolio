@@ -1,8 +1,7 @@
-
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
 dotenv.config();
 
@@ -10,15 +9,9 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: "10kb" }));
 
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.GMAIL_USER,
-    pass: process.env.GMAIL_APP_PASSWORD,
-  },
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 app.get("/", (req, res) => {
   res.json({
@@ -32,35 +25,59 @@ app.post("/api/contact", async (req, res) => {
     const { name, email, subject, message } = req.body;
 
     if (
-      !name?.trim() ||
-      !email?.trim() ||
-      !subject?.trim() ||
-      !message?.trim()
+      typeof name !== "string" ||
+      typeof email !== "string" ||
+      typeof subject !== "string" ||
+      typeof message !== "string" ||
+      !name.trim() ||
+      !email.trim() ||
+      !subject.trim() ||
+      !message.trim()
     ) {
       return res.status(400).json({
         success: false,
-        message: "Please fill in all fields.",
+        message: "Please fill in all fields correctly.",
       });
     }
 
-    await transporter.sendMail({
-      from: process.env.GMAIL_USER,
-      to: process.env.GMAIL_USER,
-      replyTo: email,
+    if (!process.env.RESEND_API_KEY || !process.env.GMAIL_USER) {
+      console.error("Missing email environment variables.");
+
+      return res.status(500).json({
+        success: false,
+        message: "The email service is not configured yet.",
+      });
+    }
+
+    const { data, error } = await resend.emails.send({
+      from: "Portfolio Contact <onboarding@resend.dev>",
+      to: [process.env.GMAIL_USER],
+      replyTo: email.trim(),
       subject: `Portfolio Contact: ${subject.trim()}`,
-      text: `Name: ${name}
-Email: ${email}
+      text: `Name: ${name.trim()}
+Email: ${email.trim()}
 
 Message:
-${message}`,
+${message.trim()}`,
     });
+
+    if (error) {
+      console.error("Resend API error:", error);
+
+      return res.status(502).json({
+        success: false,
+        message: "The email service could not send your message. Please try again.",
+      });
+    }
+
+    console.log("Contact email accepted by Resend:", data?.id);
 
     return res.status(200).json({
       success: true,
       message: "Message sent successfully!",
     });
   } catch (error) {
-    console.error("Email error:", error.message);
+    console.error("Contact endpoint error:", error.message);
 
     return res.status(500).json({
       success: false,
