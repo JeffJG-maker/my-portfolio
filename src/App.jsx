@@ -47,7 +47,7 @@ function App() {
         <Projects />
         <Experience />
         {/* <Services /> */}
-        <Contact />
+        <Contact darkMode={darkMode} />
       </main>
 
       <Footer />
