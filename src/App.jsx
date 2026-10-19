@@ -43,7 +43,7 @@ function App() {
       <main>
         <Hero />
         <About />
-        <Skills />
+        <Skills darkMode={darkMode} />
         <Projects />
         <Experience />
         {/* <Services /> */}
