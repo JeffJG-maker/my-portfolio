@@ -11,7 +11,7 @@ const Hero = () => {
     return (
         <section
             id="home"
-            className="relative h-[60vh] overflow-hidden bg-[#111315] text-white lg:h-[90vh]"
+            className="relative h-[55vh] overflow-hidden bg-[#111315] text-white lg:h-[90vh]"
         >
             {/* Background glows */}
             <div className="pointer-events-none absolute left-[10%] top-[15%] h-48 w-48 rounded-full bg-indigo-600/10 blur-3xl sm:h-64 sm:w-64 lg:h-72 lg:w-72" />
@@ -33,7 +33,7 @@ const Hero = () => {
             {/* ============================================= */}
             {/* SMALL MOBILE LAYOUT — below 640px              */}
             {/* ============================================= */}
-            <div className="relative flex h-full flex-col justify-center px-4 pt-12 sm:hidden">
+            <div className="relative flex h-full flex-col justify-center px-4 pt-8 sm:hidden">
                 <div className="grid grid-cols-[1.08fr_0.92fr] items-center gap-1">
                     {/* Mobile text */}
                     <motion.div

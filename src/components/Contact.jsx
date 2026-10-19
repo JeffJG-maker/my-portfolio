@@ -205,7 +205,7 @@ function Contact({ darkMode = false }) {
                                     target="_blank"
                                     rel="noreferrer"
                                     aria-label="GitHub"
-                                    className="flex h-11 w-11 items-center justify-center rounded-xl bg-slate-50 text-slate-600 shadow-[0_4px_18px_rgba(104,91,255,0.10)] transition duration-300 hover:-translate-y-1 hover:bg-indigo-50 hover:text-indigo-600 hover:shadow-[0_8px_24px_rgba(104,91,255,0.25)] dark:bg-[#1C1F22] dark:text-slate-400 dark:hover:bg-indigo-500/10 dark:hover:text-indigo-400"
+                                    className="flex h-11 w-11 items-center border justify-center rounded-xl bg-slate-50 text-slate-600 shadow-[0_4px_18px_rgba(104,91,255,0.10)] transition duration-300 hover:-translate-y-1 hover:bg-indigo-50 hover:text-indigo-600 hover:shadow-[0_8px_24px_rgba(104,91,255,0.25)] dark:bg-[#1C1F22] dark:text-slate-400 dark:hover:bg-indigo-500/10 dark:hover:text-indigo-400"
                                 >
                                     <FaGithub size={18} />
                                 </a>
@@ -215,7 +215,7 @@ function Contact({ darkMode = false }) {
                                     target="_blank"
                                     rel="noreferrer"
                                     aria-label="LinkedIn"
-                                    className="flex h-11 w-11 items-center justify-center rounded-xl bg-slate-50 text-slate-600 shadow-[0_4px_18px_rgba(104,91,255,0.10)] transition duration-300 hover:-translate-y-1 hover:bg-indigo-50 hover:text-indigo-600 hover:shadow-[0_8px_24px_rgba(104,91,255,0.25)] dark:bg-[#1C1F22] dark:text-slate-400 dark:hover:bg-indigo-500/10 dark:hover:text-indigo-400"
+                                    className="flex h-11 w-11 items-center border justify-center rounded-xl bg-slate-50 text-slate-600 shadow-[0_4px_18px_rgba(104,91,255,0.10)] transition duration-300 hover:-translate-y-1 hover:bg-indigo-50 hover:text-indigo-600 hover:shadow-[0_8px_24px_rgba(104,91,255,0.25)] dark:bg-[#1C1F22] dark:text-slate-400 dark:hover:bg-indigo-500/10 dark:hover:text-indigo-400"
                                 >
                                     <FaLinkedin size={18} />
                                 </a>

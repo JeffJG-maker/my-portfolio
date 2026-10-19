@@ -12,19 +12,18 @@ import {
 
     X,
 
+    Monitor,
+
     ChevronLeft,
 
     ChevronRight,
-
-    Images,
-
-    Monitor,
 
     ExternalLink,
 
 } from "lucide-react";
 
 import { FaGithub } from "react-icons/fa";
+
 
 
 
@@ -210,11 +209,11 @@ function Projects() {
 
             id="projects"
 
-            className="relative h-[100svh] min-h-0 overflow-hidden bg-slate-50 px-3 py-3 text-slate-900 transition-colors duration-300 dark:bg-[#111315] dark:text-white sm:h-auto sm:min-h-0 sm:overflow-hidden sm:px-6 sm:py-20 lg:px-10 lg:py-24"
+            className="relative h-[88svh] min-h-0 overflow-hidden bg-slate-50 px-4 py-3 pt-7 text-slate-900 transition-colors duration-300 dark:bg-[#111315] dark:text-white sm:h-[85svh] sm:min-h-0 sm:overflow-hidden sm:px-6 sm:py-4 sm:pt-8 lg:h-auto lg:px-10 lg:py-24"
 
         >
 
-            <div className="mx-auto flex h-full w-full max-w-7xl flex-col justify-center sm:h-auto sm:justify-start">
+            <div className="mx-auto flex h-full w-full max-w-7xl flex-col justify-center lg:h-auto lg:justify-start">
 
                 {/*  Section heading  */}
 
@@ -228,13 +227,13 @@ function Projects() {
 
                     transition={{ duration: 0.5 }}
 
-                    className="mb-3 flex shrink-0 flex-col justify-between gap-2 sm:mb-9 sm:gap-5 sm:flex-row sm:items-end"
+                    className="mb-4 flex shrink-0 flex-col justify-between gap-2 sm:mb-4 sm:gap-5 sm:flex-row sm:items-end lg:mb-9"
 
                 >
 
                     <div>
 
-                        <p className="mb-1 text-[9px] font-bold uppercase tracking-[0.2em] text-indigo-600 dark:text-indigo-400 sm:mb-3 sm:text-xs sm:tracking-[0.25em]">
+                        <p className="mb-1 text-[10px] font-bold uppercase tracking-[0.2em] text-indigo-600 dark:text-indigo-400 sm:mb-2 sm:text-sm sm:tracking-[0.25em] lg:mb-3 lg:text-xs">
 
                             Selected work
 
@@ -242,7 +241,7 @@ function Projects() {
 
 
 
-                        <h2 className="text-xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+                        <h2 className="text-2xl font-bold tracking-tight sm:text-3xl lg:text-5xl">
 
                             Projects I&apos;ve built.
 
@@ -250,7 +249,7 @@ function Projects() {
 
 
 
-                        <p className="mt-1 max-w-xl text-[11px] leading-4 text-slate-600 dark:text-gray-400 sm:mt-3 sm:text-base sm:leading-6">
+                        <p className="mt-1 max-w-xl text-xs leading-4 text-slate-600 dark:text-gray-400 sm:mt-2 sm:text-sm sm:leading-5 lg:mt-3 lg:text-base lg:leading-6">
 
                             A closer look at the websites and applications I&apos;ve
 
@@ -262,52 +261,10 @@ function Projects() {
 
 
 
-                    <div className="flex items-center gap-2 sm:gap-3">
-
-                        <span className="mr-1 text-xs font-medium text-slate-500 dark:text-gray-400 sm:text-sm">
-
-                            {String(activeIndex + 1).padStart(2, "0")} /{" "}
-
-                            {String(projects.length).padStart(2, "0")}
-
+                    <div className="flex items-center">
+                        <span className="text-xs font-medium text-slate-500 dark:text-gray-400 sm:text-sm">
+                            {String(activeIndex + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
                         </span>
-
-
-
-                        <button
-
-                            type="button"
-
-                            onClick={() => setActiveIndex(previousIndex)}
-
-                            aria-label="Previous project"
-
-                            className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-slate-700 shadow-[0_5px_18px_rgba(104,91,255,0.12)] transition-colors hover:text-indigo-600 dark:bg-[#1c1f22] dark:text-gray-200 dark:shadow-[0_5px_18px_rgba(104,91,255,0.08)] dark:hover:text-indigo-400 sm:h-10 sm:w-10"
-
-                        >
-
-                            <ArrowLeft size={18} />
-
-                        </button>
-
-
-
-                        <button
-
-                            type="button"
-
-                            onClick={() => setActiveIndex(nextIndex)}
-
-                            aria-label="Next project"
-
-                            className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-slate-700 shadow-[0_5px_18px_rgba(104,91,255,0.12)] transition-colors hover:text-indigo-600 dark:bg-[#1c1f22] dark:text-gray-200 dark:shadow-[0_5px_18px_rgba(104,91,255,0.08)] dark:hover:text-indigo-400 sm:h-10 sm:w-10"
-
-                        >
-
-                            <ArrowRight size={18} />
-
-                        </button>
-
                     </div>
 
                 </motion.div>
@@ -330,13 +287,13 @@ function Projects() {
 
                         transition={{ duration: 0.28 }}
 
-                        className="flex min-h-0 min-w-0 shrink-0 items-stretch gap-3 sm:gap-5"
+                        className="flex min-h-0 min-w-0 flex-1 items-stretch gap-3 sm:gap-5"
 
                     >
 
                         {/*  Main project card  */}
 
-                        <article className="min-w-0 flex-1 overflow-hidden rounded-3xl bg-white shadow-[0_12px_35px_rgba(104,91,255,0.18)] transition-shadow duration-300 hover:shadow-[0_16px_40px_rgba(104,91,255,0.25)] dark:bg-[#181b1e] dark:shadow-[0_12px_35px_rgba(104,91,255,0.10)] dark:hover:shadow-[0_16px_40px_rgba(104,91,255,0.16)]">
+                        <article className="min-h-0 min-w-0 flex-1 overflow-hidden  sm:rounded-xs lg:rounded-2xl bg-white shadow-[0_18px_45px_rgba(15,23,42,0.24),0_8px_28px_rgba(104,91,255,0.18)] transition-shadow duration-300 hover:shadow-[0_24px_55px_rgba(15,23,42,0.32),0_12px_34px_rgba(104,91,42,0.24)] dark:bg-[#181b1e] dark:shadow-[0_18px_45px_rgba(0,0,0,0.42),0_8px_28px_rgba(104,91,255,0.12)] dark:hover:shadow-[0_24px_55px_rgba(0,0,0,0.52),0_12px_34px_rgba(104,91,255,0.18)]">
 
                             <div className="grid h-full grid-cols-1 lg:grid-cols-[1.12fr_0.88fr]">
 
@@ -352,7 +309,7 @@ function Projects() {
 
                                         aria-label={`View ${activeProject.title} screenshots`}
 
-                                        className="group relative block h-[clamp(250px,40svh,350px)] w-full min-h-0 overflow-hidden bg-slate-200 text-left dark:bg-[#202428] sm:h-auto sm:min-h-[300px] lg:min-h-[430px]"
+                                        className="group relative block h-full min-h-0 w-full overflow-hidden bg-slate-200 text-left dark:bg-[#202428] lg:min-h-[430px]"
 
                                     >
 
@@ -368,7 +325,9 @@ function Projects() {
 
 
 
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/5 to-transparent" />
+                                        {/* Subtle dark tint over the screenshot, without changing the card shadow. */}
+                                        <div className="absolute inset-0 bg-black/20" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
 
 
 
@@ -380,76 +339,56 @@ function Projects() {
 
 
 
-                                        <div className="absolute bottom-2.5 left-3 right-3 hidden items-end justify-between gap-2 sm:bottom-6 sm:left-6 sm:right-6 sm:flex">
+                                        <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3 sm:bottom-6 sm:left-6 sm:right-6">
 
-                                            <div>
+                                            <div className="flex flex-col gap-2">
 
-                                                <p className="mb-0.5 text-[9px] text-white/75 sm:mb-1 sm:text-xs">
+                                                <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/80 sm:mb-2 sm:text-xs">
 
-                                                    Preview project
+                                                    Featured project
 
                                                 </p>
 
-
-
-                                                <p className="text-sm font-semibold text-white sm:text-xl">
+                                                <p className="text-xl font-semibold leading-tight text-white sm:text-2xl lg:text-xl xl:text-2xl">
 
                                                     {activeProject.title}
 
                                                 </p>
 
+                                                <p className="mt-1.5 text-sm font-medium text-white underline underline-offset-4 sm:mt-2 sm:text-base">
+                                                    Explore project <ArrowUpRight size={15} className="ml-1 inline" />
+                                                </p>
+
                                             </div>
 
-
-
-                                            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-slate-900 transition-colors group-hover:bg-indigo-600 group-hover:text-white sm:h-10 sm:w-10">
-
-                                                <Images size={18} />
-
-                                            </span>
 
                                         </div>
 
                                     </button>
 
-                                    {/* Floating actions for mobile; desktop keeps its original information panel. */}
-                                    <div className="absolute bottom-3 right-3 z-10 flex items-center gap-2 sm:hidden">
-                                        <a
-                                            href={activeProject.live}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            onClick={(event) => event.stopPropagation()}
-                                            aria-label={`Open live demo for ${activeProject.title}`}
-                                            className="inline-flex items-center gap-1.5 rounded-full bg-indigo-600 px-3 py-2 text-[11px] font-semibold text-white shadow-lg shadow-black/20 transition-colors hover:bg-indigo-700"
-                                        >
-                                            Live Demo <ArrowUpRight size={14} />
-                                        </a>
-                                        <a
-                                            href={activeProject.github}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            onClick={(event) => event.stopPropagation()}
-                                            aria-label={`Open GitHub repository for ${activeProject.title}`}
-                                            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/95 text-slate-900 shadow-lg transition-colors hover:bg-white dark:bg-[#1c1f22] dark:text-white"
-                                        >
-                                            <FaGithub size={17} />
-                                        </a>
-                                        <button
-                                            type="button"
-                                            onClick={() => openProject(activeProject)}
-                                            aria-label={`View screenshots and details for ${activeProject.title}`}
-                                            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/95 text-slate-900 shadow-lg transition-colors hover:bg-white dark:bg-[#1c1f22] dark:text-white"
-                                        >
-                                            <Images size={17} />
-                                        </button>
-                                    </div>
+                                    {/* Minimal previous/next controls on the card edges */}
+                                    <button
+                                        type="button"
+                                        onClick={() => setActiveIndex(previousIndex)}
+                                        aria-label="Previous project"
+                                        className="absolute left-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-slate-800 shadow-md backdrop-blur-sm transition hover:bg-indigo-600 hover:text-white sm:left-5 sm:h-12 sm:w-12"
+                                    >
+                                        <ArrowLeft size={20} />
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={() => setActiveIndex(nextIndex)}
+                                        aria-label="Next project"
+                                        className="absolute right-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-slate-800 shadow-md backdrop-blur-sm transition hover:bg-indigo-600 hover:text-white sm:right-5 sm:h-12 sm:w-12"
+                                    >
+                                        <ArrowRight size={20} />
+                                    </button>
                                 </div>
-
 
 
                                 {/*  Project information  */}
 
-                                <div className="hidden min-w-0 flex-col justify-center p-2.5 sm:flex sm:p-7 lg:p-8">
+                                <div className="hidden min-w-0 flex-col justify-center p-2.5 lg:flex lg:p-8">
 
                                     <div className="mb-1.5 flex flex-wrap items-center gap-1 sm:mb-5 sm:gap-2">
 
@@ -559,76 +498,6 @@ function Projects() {
 
 
 
-                        {/*  Next project preview: fixed width, no container scaling  */}
-
-                        <button
-
-                            type="button"
-
-                            onClick={() => setActiveIndex(nextIndex)}
-
-                            aria-label={`View next project: ${nextProject.title}`}
-
-                            className="group relative hidden w-[145px] shrink-0 overflow-hidden rounded-2xl bg-slate-200 text-left shadow-[0_12px_35px_rgba(104,91,255,0.18)] transition-shadow duration-300 hover:shadow-[0_16px_40px_rgba(104,91,255,0.25)] dark:bg-[#202428] dark:shadow-[0_12px_35px_rgba(104,91,255,0.10)] dark:hover:shadow-[0_16px_40px_rgba(104,91,255,0.16)] sm:block lg:w-[190px]"
-
-                        >
-
-                            <img
-
-                                src={nextProject.cover}
-
-                                alt=""
-
-                                className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-
-                            />
-
-
-
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10" />
-
-
-
-                            <div className="absolute left-3 top-4 sm:left-4 sm:top-5">
-
-                                <span className="text-[10px] font-bold uppercase tracking-widest text-white/75">
-
-                                    Next
-
-                                </span>
-
-
-
-                                <span className="mt-2 flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-md transition-colors group-hover:bg-indigo-600">
-
-                                    <ArrowRight size={16} />
-
-                                </span>
-
-                            </div>
-
-
-
-                            <div className="absolute bottom-4 left-3 right-2 sm:bottom-5 sm:left-4 sm:right-3">
-
-                                <span className="mb-2 block text-[10px] font-medium text-white/70">
-
-                                    {nextProject.number}
-
-                                </span>
-
-
-
-                                <span className="block text-xs font-bold leading-5 text-white sm:text-base">
-
-                                    {nextProject.title}
-
-                                </span>
-
-                            </div>
-
-                        </button>
-
                     </motion.div>
 
                 </AnimatePresence>
@@ -637,7 +506,7 @@ function Projects() {
 
                 {/*  Project indicators  */}
 
-                <div className="mt-2 flex shrink-0 items-center justify-center gap-2 sm:mt-6">
+                <div className="mt-3 flex shrink-0 items-center justify-center gap-2 sm:mt-3 lg:mt-6">
 
                     {projects.map((project, index) => (
 

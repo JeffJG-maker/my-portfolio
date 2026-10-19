@@ -156,9 +156,8 @@ export default function Skills({ darkMode = false }) {
           </h2>
 
           <p
-            className={`mx-auto mt-3 max-w-xl text-sm sm:text-base ${
-              darkMode ? "text-gray-400" : "text-gray-600"
-            }`}
+            className={`mx-auto mt-3 max-w-xl text-sm sm:text-base ${darkMode ? "text-gray-400" : "text-gray-600"
+              }`}
           >
             Technologies and tools I use to build responsive, functional, and
             user-friendly web applications.
@@ -179,26 +178,24 @@ export default function Skills({ darkMode = false }) {
                 type="button"
                 onClick={() => changeCategory(category.id)}
                 aria-pressed={isActive}
-                className={`inline-flex items-center gap-2 rounded-xl px-3 py-2.5 text-xs font-medium transition-colors duration-200 sm:px-4 sm:text-sm ${
-                  isActive
+                className={`inline-flex items-center gap-2 rounded-xl px-3 py-2.5 text-xs font-medium transition-all duration-200 sm:px-4 sm:text-sm ${isActive
                     ? "bg-indigo-600 text-white shadow-[0_5px_16px_rgba(104,91,255,0.22)]"
                     : darkMode
-                    ? "text-gray-400 hover:bg-white/[0.05] hover:text-white"
-                    : "text-gray-600 hover:bg-indigo-50 hover:text-indigo-700"
-                }`}
+                      ? "bg-indigo-500/10 text-indigo-200 shadow-sm hover:bg-indigo-500/15 hover:text-white lg:bg-transparent lg:shadow-none"
+                      : "bg-indigo-50/70 text-indigo-700 shadow-sm hover:bg-indigo-100 hover:text-indigo-800 lg:bg-transparent lg:shadow-none"
+                  }`}
               >
                 <CategoryIcon size={16} />
 
                 {category.name}
 
                 <span
-                  className={`rounded-full px-1.5 py-0.5 text-[10px] ${
-                    isActive
-                      ? "bg-white/20 text-white"
-                      : darkMode
+                  className={`rounded-full px-1.5 py-0.5 text-[10px] ${isActive
+                    ? "bg-white/20 text-white"
+                    : darkMode
                       ? "bg-white/[0.07] text-gray-400"
                       : "bg-gray-100 text-gray-600"
-                  }`}
+                    }`}
                 >
                   {category.skills.length}
                 </span>
@@ -232,11 +229,10 @@ export default function Skills({ darkMode = false }) {
                 </div>
 
                 <span
-                  className={`rounded-lg px-3 py-1.5 text-xs ${
-                    darkMode
-                      ? "bg-white/[0.05] text-gray-400"
-                      : "bg-gray-50 text-gray-500"
-                  }`}
+                  className={`rounded-lg px-3 py-1.5 text-xs ${darkMode
+                    ? "bg-white/[0.05] text-gray-400"
+                    : "bg-gray-50 text-gray-500"
+                    }`}
                 >
                   {visibleSkills.length} of {selectedCategory.skills.length}
                 </span>
@@ -259,11 +255,10 @@ export default function Skills({ darkMode = false }) {
                       className={`flex min-h-[76px] items-center gap-3 rounded-xl border p-3 transition-[box-shadow,background-color] duration-300 hover:shadow-[0_12px_30px_rgba(104,91,255,0.25)] dark:hover:shadow-[0_12px_30px_rgba(104,91,255,0.16)] ${cardClasses}`}
                     >
                       <span
-                        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${
-                          darkMode
-                            ? "bg-indigo-400/10 text-indigo-300"
-                            : "bg-indigo-50 text-indigo-600"
-                        }`}
+                        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${darkMode
+                          ? "bg-indigo-400/10 text-indigo-300"
+                          : "bg-indigo-50 text-indigo-600"
+                          }`}
                       >
                         <SkillIcon size={18} />
                       </span>
@@ -283,11 +278,10 @@ export default function Skills({ darkMode = false }) {
                     type="button"
                     onClick={() => setShowAll((previous) => !previous)}
                     aria-expanded={showAll}
-                    className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
-                      darkMode
-                        ? "text-indigo-300 hover:bg-indigo-400/10"
-                        : "text-indigo-600 hover:bg-indigo-50"
-                    }`}
+                    className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${darkMode
+                      ? "text-indigo-300 hover:bg-indigo-400/10"
+                      : "text-indigo-600 hover:bg-indigo-50"
+                      }`}
                   >
                     {showAll ? (
                       <>
