@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -136,15 +137,18 @@ export default function Skills({ darkMode = false }) {
   return (
     <section
       id="skills"
-      className={`px-5 py-16 transition-colors duration-300 sm:px-8 lg:px-12 lg:py-20 ${sectionClasses}`}
+      className={`overflow-hidden px-5 py-16 transition-colors duration-300 sm:px-8 lg:px-12 lg:py-20 ${sectionClasses}`}
     >
       <div className="mx-auto max-w-6xl">
-        {/* Section heading */}
+        {/* Section heading: slides in from the left */}
         <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, x: -45 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{
+            duration: 0.65,
+            ease: "easeOut",
+          }}
           className="mb-8 text-center"
         >
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.25em] text-indigo-500 sm:text-sm">
@@ -164,8 +168,16 @@ export default function Skills({ darkMode = false }) {
           </p>
         </motion.div>
 
-        {/* Category tabs */}
-        <div
+        {/* Category tabs: slide in from the right */}
+        <motion.div
+          initial={{ opacity: 0, x: 45 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{
+            duration: 0.65,
+            delay: 0.1,
+            ease: "easeOut",
+          }}
           className={`mb-6 flex flex-wrap justify-center gap-2 rounded-2xl border p-2 transition-colors duration-300 ${panelClasses}`}
         >
           {skillCategories.map((category) => {
@@ -191,10 +203,10 @@ export default function Skills({ darkMode = false }) {
 
                 <span
                   className={`rounded-full px-1.5 py-0.5 text-[10px] ${isActive
-                    ? "bg-white/20 text-white"
-                    : darkMode
-                      ? "bg-white/[0.07] text-gray-400"
-                      : "bg-gray-100 text-gray-600"
+                      ? "bg-white/20 text-white"
+                      : darkMode
+                        ? "bg-white/[0.07] text-gray-400"
+                        : "bg-gray-100 text-gray-600"
                     }`}
                 >
                   {category.skills.length}
@@ -202,19 +214,27 @@ export default function Skills({ darkMode = false }) {
               </button>
             );
           })}
-        </div>
+        </motion.div>
 
-        {/* Skills panel */}
-        <div
+        {/* Skills panel: slides up into view */}
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{
+            duration: 0.7,
+            delay: 0.1,
+            ease: "easeOut",
+          }}
           className={`rounded-2xl border p-4 transition-colors duration-300 sm:p-6 ${panelClasses}`}
         >
           <AnimatePresence mode="wait">
             <motion.div
               key={activeCategory}
-              initial={{ opacity: 0, y: 8 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -5 }}
-              transition={{ duration: 0.2 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
             >
               {/* Category heading */}
               <div className="mb-5 flex items-center justify-between gap-3">
@@ -230,15 +250,15 @@ export default function Skills({ darkMode = false }) {
 
                 <span
                   className={`rounded-lg px-3 py-1.5 text-xs ${darkMode
-                    ? "bg-white/[0.05] text-gray-400"
-                    : "bg-gray-50 text-gray-500"
+                      ? "bg-white/[0.05] text-gray-400"
+                      : "bg-gray-50 text-gray-500"
                     }`}
                 >
                   {visibleSkills.length} of {selectedCategory.skills.length}
                 </span>
               </div>
 
-              {/* Skill cards */}
+              {/* Skill cards: staggered slide-in animation */}
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
                 {visibleSkills.map((skill, index) => {
                   const SkillIcon = skill.icon;
@@ -246,18 +266,19 @@ export default function Skills({ darkMode = false }) {
                   return (
                     <motion.div
                       key={skill.name}
-                      initial={{ opacity: 0, y: 8 }}
+                      initial={{ opacity: 0, y: 22 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{
-                        duration: 0.25,
-                        delay: index * 0.035,
+                        duration: 0.4,
+                        delay: index * 0.07,
+                        ease: "easeOut",
                       }}
                       className={`flex min-h-[76px] items-center gap-3 rounded-xl border p-3 transition-[box-shadow,background-color] duration-300 hover:shadow-[0_12px_30px_rgba(104,91,255,0.25)] dark:hover:shadow-[0_12px_30px_rgba(104,91,255,0.16)] ${cardClasses}`}
                     >
                       <span
                         className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${darkMode
-                          ? "bg-indigo-400/10 text-indigo-300"
-                          : "bg-indigo-50 text-indigo-600"
+                            ? "bg-indigo-400/10 text-indigo-300"
+                            : "bg-indigo-50 text-indigo-600"
                           }`}
                       >
                         <SkillIcon size={18} />
@@ -279,8 +300,8 @@ export default function Skills({ darkMode = false }) {
                     onClick={() => setShowAll((previous) => !previous)}
                     aria-expanded={showAll}
                     className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${darkMode
-                      ? "text-indigo-300 hover:bg-indigo-400/10"
-                      : "text-indigo-600 hover:bg-indigo-50"
+                        ? "text-indigo-300 hover:bg-indigo-400/10"
+                        : "text-indigo-600 hover:bg-indigo-50"
                       }`}
                   >
                     {showAll ? (
@@ -298,7 +319,7 @@ export default function Skills({ darkMode = false }) {
               )}
             </motion.div>
           </AnimatePresence>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
