@@ -24,13 +24,13 @@ const projects = [
         status: "In Progress",
         github: "https://github.com/JeffJG-maker/My-Church-Website",
         live: "https://lfcwinnersiguosa.onrender.com/",
-        cover: "/projects/church/home.png",
+        cover: "projects/church/Landing_Hero_Section.png",
         screenshots: [
-            { src: "/projects/church/home.png", label: "Church Website" },
-            { src: "/projects/church/dashboard.png", label: "Admin Dashboard" },
-            { src: "/projects/church/sermons.png", label: "Sermon Management" },
-            { src: "/projects/church/login.png", label: "Authentication" },
-            { src: "/projects/church/contact.png", label: "Contact Page" },
+            { src: "projects/church/Landing_Hero_Section.png", label: "The Church's landing page" },
+            { src: "projects/church/A_Section_In_TheHome_Page.png", label: "A welcome message section" },
+            { src: "/projects/church/The_About_Page.png", label: "A section in the About page" },
+            { src: "/projects/church/The_Contact_Us_Section.png", label: "The Contact page" },
+            { src: "/projects/church/The_Events_Section.png", label: "The Events page" },
         ],
     },
     {
@@ -292,8 +292,8 @@ function Projects() {
                                 onClick={() => setActiveIndex(index)}
                                 aria-label={`Show project ${index + 1}`}
                                 className={`h-1.5 rounded-full transition-all duration-300 ${index === activeIndex
-                                        ? "w-9 bg-indigo-600 dark:bg-indigo-400"
-                                        : "w-3 bg-slate-300 hover:bg-slate-400 dark:bg-[#34383d] dark:hover:bg-gray-500"
+                                    ? "w-9 bg-indigo-600 dark:bg-indigo-400"
+                                    : "w-3 bg-slate-300 hover:bg-slate-400 dark:bg-[#34383d] dark:hover:bg-gray-500"
                                     }`}
                             />
                         ))}
@@ -402,8 +402,8 @@ function Projects() {
                                                 aria-label={`View ${screenshot.label}`}
                                                 title={screenshot.label}
                                                 className={`relative h-10 min-w-0 flex-1 overflow-hidden rounded-lg bg-slate-200 transition-opacity sm:h-12 ${currentImage === index
-                                                        ? "ring-2 ring-indigo-500 ring-offset-2 ring-offset-slate-50 dark:ring-offset-[#141618]"
-                                                        : "opacity-60 hover:opacity-100"
+                                                    ? "ring-2 ring-indigo-500 ring-offset-2 ring-offset-slate-50 dark:ring-offset-[#141618]"
+                                                    : "opacity-60 hover:opacity-100"
                                                     }`}
                                             >
                                                 <img

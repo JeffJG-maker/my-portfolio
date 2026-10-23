@@ -1,7 +1,14 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, Send } from "lucide-react";
+import {
+    ArrowRight,
+    ArrowUpRight,
+    CheckCircle2,
+    Mail,
+    MapPin,
+    Send,
+} from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 function Contact({ darkMode = false }) {
@@ -36,10 +43,7 @@ function Contact({ darkMode = false }) {
         event.preventDefault();
 
         setIsSending(true);
-        setStatus({
-            type: "",
-            message: "",
-        });
+        setStatus({ type: "", message: "" });
 
         try {
             const response = await fetch(`${API_URL}/api/contact`, {
@@ -58,7 +62,8 @@ function Contact({ darkMode = false }) {
 
             setStatus({
                 type: "success",
-                message: "Message sent successfully! I'll get back to you soon.",
+                message:
+                    "Message sent successfully! I'll get back to you soon.",
             });
 
             setFormData({
@@ -79,263 +84,386 @@ function Contact({ darkMode = false }) {
         }
     };
 
-    // Matches the shadow color and intensity used in Skills.jsx.
-    const cardShadow = darkMode
-        ? "shadow-[0_8px_24px_rgba(104,91,255,0.08)] hover:shadow-[0_12px_30px_rgba(104,91,255,0.16)]"
-        : "shadow-[0_8px_24px_rgba(104,91,255,0.14)] hover:shadow-[0_12px_30px_rgba(104,91,255,0.25)]";
+    const headingText = darkMode
+        ? "text-white"
+        : "text-[#17191C]";
 
-    const inputStyles =
-        "mt-2 w-full min-w-0 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 dark:border-white/[0.07] dark:bg-[#1C1F22] dark:text-white";
+    const mutedText = darkMode
+        ? "text-gray-400"
+        : "text-slate-600";
 
-    const labelStyles =
-        "text-sm font-semibold text-slate-900 dark:text-white";
+    const fieldStyles = `mt-1.5 w-full min-w-0 rounded-lg border-0 px-3.5 py-3 text-sm outline-none transition-colors duration-200 placeholder:text-slate-400 focus:ring-2 focus:ring-indigo-500/50 ${darkMode
+            ? "bg-[#24272B] text-white focus:bg-[#292D32]"
+            : "bg-[#F3F4F5] text-[#17191C] focus:bg-white"
+        }`;
+
+    const labelStyles = `text-xs font-semibold ${darkMode ? "text-gray-300" : "text-slate-700"
+        }`;
+
+    const socialStyles = `flex h-10 w-10 items-center justify-center rounded-lg transition-all duration-200 hover:-translate-y-0.5 hover:bg-indigo-600 hover:text-white ${darkMode
+            ? "bg-white/[0.05] text-gray-300"
+            : "bg-[#F0F1F2] text-slate-700"
+        }`;
+
+    const iconSurface = darkMode
+        ? "bg-white/[0.06] text-gray-300"
+        : "bg-[#F0F1F2] text-slate-700";
 
     return (
         <section
             id="contact"
-            className={`px-6 py-24 transition-colors duration-300 ${darkMode
+            className={`relative isolate overflow-hidden transition-colors duration-300 ${darkMode
                     ? "bg-[#111315] text-white"
-                    : "bg-slate-50 text-slate-900"
+                    : "bg-[#F8F9FA] text-[#17191C]"
                 }`}
         >
-            <div className="mx-auto max-w-7xl">
-                {/* Section Heading */}
+            <div className="mx-auto flex min-h-[min(760px,100svh)] max-w-7xl flex-col justify-center px-5 py-10 sm:px-8 sm:py-12 lg:min-h-[min(760px,100svh)] lg:px-12 lg:py-8">
+                {/* Section heading */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 14 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{ duration: 0.6 }}
-                    className="mx-auto mb-14 max-w-2xl text-center"
+                    viewport={{ once: true, amount: 0.15 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                    className="mb-7 text-center sm:mb-9 lg:mb-7"
                 >
-                    <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-indigo-600 dark:text-indigo-400">
+                    <p
+                        className={`mb-3 text-xs font-semibold uppercase tracking-[0.2em] ${darkMode ? "text-gray-400" : "text-slate-500"
+                            }`}
+                    >
                         Contact
                     </p>
 
-                    <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
-                        Let's Work Together
+                    <h2
+                        className={`text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl ${headingText}`}
+                    >
+                        Have an idea? Let's build it.
                     </h2>
 
                     <p
-                        className={`mt-5 text-lg leading-8 ${darkMode ? "text-slate-400" : "text-slate-600"
-                            }`}
+                        className={`mx-auto mt-3 max-w-xl text-sm leading-6 sm:text-base ${mutedText}`}
                     >
-                        Have a project, idea, or opportunity in mind? I'd love to hear
-                        about it and explore how we can bring it to life.
+                        Have a project in mind? Tell me about it, and let's
+                        turn your idea into something exceptional.
                     </p>
                 </motion.div>
 
-                <div className="grid min-w-0 gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
-                    {/* Contact Information */}
+                {/* Main two-column layout */}
+                <div className="grid min-w-0 items-center gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:gap-12 xl:gap-16">
+                    {/* Left: Introduction and contact details */}
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.2 }}
-                        transition={{ duration: 0.6 }}
-                        className={`min-w-0 rounded-3xl border border-transparent p-8 transition-[box-shadow,background-color] duration-300 ${darkMode
-                                ? "bg-[#181B1E] border-white/[0.04]"
-                                : "bg-white"
-                            } ${cardShadow}`}
+                        initial={{ opacity: 0, x: -25 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, amount: 0.1 }}
+                        transition={{ duration: 0.55, ease: "easeOut" }}
+                        className="min-w-0 lg:pr-2"
                     >
-                        <div className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-2 text-sm font-medium text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">
+                        <div className="mb-4 inline-flex items-center gap-2">
                             <span className="h-2 w-2 rounded-full bg-emerald-500" />
-                            Available for opportunities
+                            <span
+                                className={`text-xs font-medium ${darkMode ? "text-gray-400" : "text-slate-600"
+                                    }`}
+                            >
+                                Available for new opportunities
+                            </span>
                         </div>
 
-                        <h3 className="mt-7 text-2xl font-bold">
-                            Get in touch
+                        <h3
+                            className={`max-w-md text-2xl font-bold leading-tight sm:text-3xl lg:text-4xl ${headingText}`}
+                        >
+                            Let's make your next idea happen.
                         </h3>
 
                         <p
-                            className={`mt-3 leading-7 ${darkMode ? "text-slate-400" : "text-slate-600"
-                                }`}
+                            className={`mt-4 max-w-md text-sm leading-6 sm:text-base sm:leading-7 ${mutedText}`}
                         >
-                            Whether you have a project in mind or simply want to connect,
-                            feel free to reach out.
+                            Whether it's a website, a web application, or a
+                            creative project, I'm ready to listen, collaborate,
+                            and build something meaningful with you.
                         </p>
 
-                        {/* Contact Details */}
-                        <div className="mt-8 space-y-5">
-                            {/* Email */}
-                            <a
-                                href="mailto:josasofure@gmail.com"
-                                className="group flex items-center gap-4"
+                        {/* Email */}
+                        <a
+                            href="mailto:josasofure@gmail.com"
+                            className="group mt-6 inline-flex max-w-full items-center gap-3 rounded-lg py-2 transition-colors hover:text-indigo-500"
+                        >
+                            <span
+                                className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${iconSurface}`}
                             >
-                                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 shadow-[0_4px_18px_rgba(104,91,255,0.10)] transition duration-300 group-hover:bg-indigo-600 group-hover:text-white group-hover:shadow-[0_6px_22px_rgba(104,91,255,0.22)] dark:bg-indigo-500/10 dark:text-indigo-400 dark:group-hover:bg-indigo-500 dark:group-hover:text-white">
-                                    <Mail size={19} />
-                                </div>
+                                <Mail size={18} />
+                            </span>
 
-                                <div>
-                                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                                        Email
-                                    </p>
+                            <span className="min-w-0">
+                                <span className="block text-[10px] font-medium uppercase tracking-[0.15em] text-slate-400">
+                                    Email address
+                                </span>
 
-                                    <p className="mt-1 text-sm font-medium text-slate-800 transition-colors group-hover:text-indigo-600 dark:text-slate-200 dark:group-hover:text-indigo-400">
-                                        josasofure@gmail.com
-                                    </p>
-                                </div>
-                            </a>
+                                <span
+                                    className={`mt-1 block break-all text-sm font-semibold ${darkMode ? "text-gray-200" : "text-slate-800"
+                                        }`}
+                                >
+                                    josasofure@gmail.com
+                                </span>
+                            </span>
 
-                            {/* Location */}
-                            <div className="flex items-center gap-4">
-                                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 shadow-[0_4px_18px_rgba(104,91,255,0.10)] dark:bg-indigo-500/10 dark:text-indigo-400">
-                                    <MapPin size={19} />
-                                </div>
+                            <ArrowUpRight
+                                size={16}
+                                className="ml-auto shrink-0 text-slate-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                            />
+                        </a>
 
-                                <div>
-                                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                                        Location
-                                    </p>
+                        {/* Location */}
+                        <div className="mt-3 flex items-center gap-3">
+                            <span
+                                className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${iconSurface}`}
+                            >
+                                <MapPin size={18} />
+                            </span>
 
-                                    <p className="mt-1 text-sm font-medium text-slate-800 dark:text-slate-200">
-                                        Nigeria
-                                    </p>
-                                </div>
+                            <div>
+                                <p className="text-[10px] font-medium uppercase tracking-[0.15em] text-slate-400">
+                                    Location
+                                </p>
+
+                                <p
+                                    className={`mt-1 text-sm font-semibold ${darkMode ? "text-gray-200" : "text-slate-800"
+                                        }`}
+                                >
+                                    Nigeria · Available worldwide
+                                </p>
                             </div>
                         </div>
 
-                        {/* Social Links */}
-                        <div className="mt-9 border-t border-slate-100 pt-7 dark:border-white/[0.06]">
-                            <p className="text-sm font-semibold">
+                        {/* Social links */}
+                        <div className="mt-6 flex items-center gap-3">
+                            <a
+                                href="https://github.com/JeffJG-maker"
+                                target="_blank"
+                                rel="noreferrer"
+                                aria-label="GitHub"
+                                className={socialStyles}
+                            >
+                                <FaGithub size={18} />
+                            </a>
+
+                            <a
+                                href="https://www.linkedin.com/in/nosa-orhue-osasofure-jeffrey-43332530a/"
+                                target="_blank"
+                                rel="noreferrer"
+                                aria-label="LinkedIn"
+                                className={socialStyles}
+                            >
+                                <FaLinkedin size={18} />
+                            </a>
+
+                            <span
+                                className={`ml-1 text-xs ${darkMode ? "text-gray-500" : "text-slate-500"
+                                    }`}
+                            >
                                 Find me online
-                            </p>
+                            </span>
+                        </div>
 
-                            <div className="mt-4 flex gap-3">
-                                <a
-                                    href="https://github.com/JeffJG-maker"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    aria-label="GitHub"
-                                    className="flex h-11 w-11 items-center border justify-center rounded-xl bg-slate-50 text-slate-600 shadow-[0_4px_18px_rgba(104,91,255,0.10)] transition duration-300 hover:-translate-y-1 hover:bg-indigo-50 hover:text-indigo-600 hover:shadow-[0_8px_24px_rgba(104,91,255,0.25)] dark:bg-[#1C1F22] dark:text-slate-400 dark:hover:bg-indigo-500/10 dark:hover:text-indigo-400"
-                                >
-                                    <FaGithub size={18} />
-                                </a>
+                        {/* Direction toward the form */}
+                        <div className="mt-7 hidden items-center gap-3 lg:flex">
+                            <span
+                                className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${darkMode
+                                        ? "bg-white text-[#17191C]"
+                                        : "bg-[#17191C] text-white"
+                                    }`}
+                            >
+                                <ArrowRight size={17} />
+                            </span>
 
-                                <a
-                                    href="https://www.linkedin.com/in/nosa-orhue-osasofure-jeffrey-43332530a/"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    aria-label="LinkedIn"
-                                    className="flex h-11 w-11 items-center border justify-center rounded-xl bg-slate-50 text-slate-600 shadow-[0_4px_18px_rgba(104,91,255,0.10)] transition duration-300 hover:-translate-y-1 hover:bg-indigo-50 hover:text-indigo-600 hover:shadow-[0_8px_24px_rgba(104,91,255,0.25)] dark:bg-[#1C1F22] dark:text-slate-400 dark:hover:bg-indigo-500/10 dark:hover:text-indigo-400"
-                                >
-                                    <FaLinkedin size={18} />
-                                </a>
-                            </div>
+                            <div
+                                className={`h-px w-16 xl:w-24 ${darkMode ? "bg-white/20" : "bg-slate-300"
+                                    }`}
+                            />
+
+                            <span
+                                className={`text-xs ${darkMode ? "text-gray-500" : "text-slate-500"
+                                    }`}
+                            >
+                                Tell me about your project
+                            </span>
                         </div>
                     </motion.div>
 
-                    {/* Contact Form */}
+                    {/* Right: Compact contact form */}
                     <motion.form
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.2 }}
-                        transition={{ duration: 0.6 }}
+                        initial={{ opacity: 0, x: 25 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, amount: 0.1 }}
+                        transition={{
+                            duration: 0.55,
+                            delay: 0.08,
+                            ease: "easeOut",
+                        }}
                         onSubmit={handleSubmit}
-                        className={`min-w-0 max-w-full rounded-3xl border border-transparent p-8 transition-[box-shadow,background-color] duration-300 ${darkMode
-                                ? "bg-[#181B1E] border-white/[0.04]"
+                        className={`min-w-0 rounded-2xl p-5 shadow-[0_12px_40px_rgba(15,23,42,0.05)] transition-colors duration-300 sm:p-7 lg:p-7 xl:p-8 ${darkMode
+                                ? "bg-[#191C20] shadow-[0_12px_40px_rgba(0,0,0,0.16)]"
                                 : "bg-white"
-                            } ${cardShadow}`}
+                            }`}
                     >
-                        <div className="grid min-w-0 gap-6 sm:grid-cols-2">
-                            {/* Name */}
+                        <div className="mb-5">
+                            <p
+                                className={`text-[10px] font-semibold uppercase tracking-[0.18em] ${darkMode ? "text-gray-400" : "text-slate-500"
+                                    }`}
+                            >
+                                Start a project
+                            </p>
+
+                            <h3
+                                className={`mt-1.5 text-xl font-bold sm:text-2xl ${headingText}`}
+                            >
+                                Send me a message.
+                            </h3>
+
+                            <p className={`mt-1.5 text-xs leading-5 ${mutedText}`}>
+                                I'll get back to you as soon as I can.
+                            </p>
+                        </div>
+
+                        {/* Name and email */}
+                        <div className="grid min-w-0 gap-4 sm:grid-cols-2">
                             <div className="min-w-0">
-                                <label htmlFor="name" className={labelStyles}>
-                                    Name
+                                <label htmlFor="contact-name" className={labelStyles}>
+                                    Your name
                                 </label>
 
                                 <input
-                                    id="name"
+                                    id="contact-name"
                                     name="name"
                                     type="text"
                                     autoComplete="name"
                                     value={formData.name}
                                     onChange={handleChange}
-                                    placeholder="Your name"
+                                    placeholder="John Doe"
                                     required
-                                    className={inputStyles}
+                                    className={fieldStyles}
                                 />
                             </div>
 
-                            {/* Email */}
                             <div className="min-w-0">
-                                <label htmlFor="email" className={labelStyles}>
-                                    Email
+                                <label htmlFor="contact-email" className={labelStyles}>
+                                    Email address
                                 </label>
 
                                 <input
-                                    id="email"
+                                    id="contact-email"
                                     name="email"
                                     type="email"
                                     autoComplete="email"
                                     value={formData.email}
                                     onChange={handleChange}
-                                    placeholder="your@email.com"
+                                    placeholder="you@example.com"
                                     required
-                                    className={inputStyles}
+                                    className={fieldStyles}
                                 />
                             </div>
                         </div>
 
                         {/* Subject */}
-                        <div className="mt-6 min-w-0">
-                            <label htmlFor="subject" className={labelStyles}>
+                        <div className="mt-4 min-w-0">
+                            <label htmlFor="contact-subject" className={labelStyles}>
                                 Subject
                             </label>
 
                             <input
-                                id="subject"
+                                id="contact-subject"
                                 name="subject"
                                 type="text"
                                 value={formData.subject}
                                 onChange={handleChange}
                                 placeholder="What would you like to discuss?"
                                 required
-                                className={inputStyles}
+                                className={fieldStyles}
                             />
                         </div>
 
                         {/* Message */}
-                        <div className="mt-6 min-w-0">
-                            <label htmlFor="message" className={labelStyles}>
-                                Message
+                        <div className="mt-4 min-w-0">
+                            <label htmlFor="contact-message" className={labelStyles}>
+                                Your message
                             </label>
 
                             <textarea
-                                id="message"
+                                id="contact-message"
                                 name="message"
-                                rows={6}
+                                rows={3}
                                 value={formData.message}
                                 onChange={handleChange}
                                 placeholder="Tell me a little about your project..."
                                 required
-                                className={`${inputStyles} resize-none`}
+                                className={`${fieldStyles} min-h-[90px] resize-y`}
                             />
                         </div>
 
-                        {/* Status Message */}
+                        {/* Submission feedback */}
                         {status.message && (
                             <div
                                 role="status"
                                 aria-live="polite"
-                                className={`mt-5 rounded-xl px-4 py-3 text-sm font-medium ${status.type === "success"
-                                        ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400"
-                                        : "bg-red-50 text-red-700 dark:bg-red-500/10 dark:text-red-400"
+                                className={`mt-4 flex items-start gap-2 rounded-lg px-3.5 py-3 text-xs font-medium leading-5 ${status.type === "success"
+                                        ? darkMode
+                                            ? "bg-emerald-500/10 text-emerald-400"
+                                            : "bg-emerald-50 text-emerald-700"
+                                        : darkMode
+                                            ? "bg-red-500/10 text-red-400"
+                                            : "bg-red-50 text-red-700"
                                     }`}
                             >
-                                {status.message}
+                                {status.type === "success" && (
+                                    <CheckCircle2
+                                        size={15}
+                                        className="mt-0.5 shrink-0"
+                                    />
+                                )}
+
+                                <span>{status.message}</span>
                             </div>
                         )}
 
-                        {/* Submit */}
+                        {/* Submit button */}
                         <button
                             type="submit"
                             disabled={isSending}
-                            className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_4px_18px_rgba(104,91,255,0.12)] transition duration-300 hover:-translate-y-0.5 hover:bg-indigo-600 hover:shadow-[0_8px_28px_rgba(104,91,255,0.25)] disabled:cursor-not-allowed disabled:opacity-60 dark:bg-white dark:text-slate-900 dark:hover:bg-indigo-500 dark:hover:text-white"
+                            className="group mt-5 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-indigo-600 px-5 py-3.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-60"
                         >
-                            {isSending ? "Sending..." : "Send Message"}
-                            <Send size={17} />
+                            {isSending ? "Sending message..." : "Send Message"}
+
+                            <Send
+                                size={15}
+                                className="transition-transform duration-200 group-hover:translate-x-0.5"
+                            />
                         </button>
+
+                        <p
+                            className={`mt-3 text-center text-[10px] leading-5 ${darkMode ? "text-gray-500" : "text-slate-400"
+                                }`}
+                        >
+                            Your details are only used to respond to your enquiry.
+                        </p>
                     </motion.form>
                 </div>
+
+                {/* Minimal footer */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.45, delay: 0.1 }}
+                    className={`mt-7 flex flex-col items-center justify-between gap-2 text-xs sm:flex-row ${darkMode ? "text-gray-500" : "text-slate-500"
+                        }`}
+                >
+                    <p>Have a great idea? Let's make it happen.</p>
+
+                    <a
+                        href="mailto:josasofure@gmail.com"
+                        className="inline-flex items-center gap-1 font-medium transition-colors hover:text-indigo-500"
+                    >
+                        Get in touch <ArrowUpRight size={14} />
+                    </a>
+                </motion.div>
             </div>
         </section>
     );
