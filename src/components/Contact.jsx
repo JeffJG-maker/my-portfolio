@@ -2,12 +2,11 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import {
-    ArrowRight,
     ArrowUpRight,
-    CheckCircle2,
     Mail,
     MapPin,
     Send,
+    CheckCircle2,
 } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
@@ -62,8 +61,7 @@ function Contact({ darkMode = false }) {
 
             setStatus({
                 type: "success",
-                message:
-                    "Message sent successfully! I'll get back to you soon.",
+                message: "Message sent successfully! I'll get back to you soon.",
             });
 
             setFormData({
@@ -86,211 +84,194 @@ function Contact({ darkMode = false }) {
 
     const headingText = darkMode
         ? "text-white"
-        : "text-[#17191C]";
+        : "text-[#191B1F]";
 
     const mutedText = darkMode
-        ? "text-gray-400"
-        : "text-slate-600";
+        ? "text-[#A0A4AA]"
+        : "text-[#70757D]";
 
-    const fieldStyles = `mt-1.5 w-full min-w-0 rounded-lg border-0 px-3.5 py-3 text-sm outline-none transition-colors duration-200 placeholder:text-slate-400 focus:ring-2 focus:ring-indigo-500/50 ${darkMode
+    const labelStyles = `block text-xs font-medium ${darkMode ? "text-gray-300" : "text-[#555B63]"
+        }`;
+
+    const fieldStyles = `mt-2 w-full rounded-lg border-0 px-4 py-3 text-sm outline-none transition-all duration-200 placeholder:text-[#92979E] focus:ring-2 focus:ring-indigo-500/40 ${darkMode
             ? "bg-[#24272B] text-white focus:bg-[#292D32]"
-            : "bg-[#F3F4F5] text-[#17191C] focus:bg-white"
+            : "bg-[#F2F3F4] text-[#191B1F] focus:bg-[#F7F7F8]"
         }`;
 
-    const labelStyles = `text-xs font-semibold ${darkMode ? "text-gray-300" : "text-slate-700"
+    const socialStyles = `flex h-10 w-10 items-center justify-center rounded-lg transition-all duration-200 ${darkMode
+            ? "bg-[#202327] text-gray-300 hover:bg-white hover:text-[#17191C]"
+            : "bg-[#F0F1F2] text-[#343940] hover:bg-[#191B1F] hover:text-white"
         }`;
-
-    const socialStyles = `flex h-10 w-10 items-center justify-center rounded-lg transition-all duration-200 hover:-translate-y-0.5 hover:bg-indigo-600 hover:text-white ${darkMode
-            ? "bg-white/[0.05] text-gray-300"
-            : "bg-[#F0F1F2] text-slate-700"
-        }`;
-
-    const iconSurface = darkMode
-        ? "bg-white/[0.06] text-gray-300"
-        : "bg-[#F0F1F2] text-slate-700";
 
     return (
         <section
             id="contact"
-            className={`relative isolate overflow-hidden transition-colors duration-300 ${darkMode
+            style={{ fontFamily: "Tahoma, Geneva, sans-serif" }}
+            className={`transition-colors duration-300 ${darkMode
                     ? "bg-[#111315] text-white"
-                    : "bg-[#F8F9FA] text-[#17191C]"
+                    : "bg-[#F8F9FA] text-[#191B1F]"
                 }`}
         >
-            <div className="mx-auto flex min-h-[min(760px,100svh)] max-w-7xl flex-col justify-center px-5 py-10 sm:px-8 sm:py-12 lg:min-h-[min(760px,100svh)] lg:px-12 lg:py-8">
+            <div className="mx-auto flex min-h-[min(760px,100svh)] max-w-7xl flex-col justify-center px-5 py-12 sm:px-8 lg:min-h-[min(760px,100svh)] lg:px-12 lg:py-10">
+
                 {/* Section heading */}
                 <motion.div
                     initial={{ opacity: 0, y: 14 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.15 }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="mb-7 text-center sm:mb-9 lg:mb-7"
+                    transition={{ duration: 0.5 }}
+                    className="mb-10 lg:mb-12"
                 >
                     <p
-                        className={`mb-3 text-xs font-semibold uppercase tracking-[0.2em] ${darkMode ? "text-gray-400" : "text-slate-500"
+                        className={`mb-3 text-xs font-semibold uppercase tracking-[0.18em] ${darkMode ? "text-gray-400" : "text-[#777D85]"
                             }`}
                     >
-                        Contact
+                        Get in touch
                     </p>
 
                     <h2
-                        className={`text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl ${headingText}`}
+                        className={`text-3xl font-bold tracking-tight sm:text-4xl lg:text-[42px] ${headingText}`}
                     >
-                        Have an idea? Let's build it.
+                        Contact me.
                     </h2>
-
-                    <p
-                        className={`mx-auto mt-3 max-w-xl text-sm leading-6 sm:text-base ${mutedText}`}
-                    >
-                        Have a project in mind? Tell me about it, and let's
-                        turn your idea into something exceptional.
-                    </p>
                 </motion.div>
 
-                {/* Main two-column layout */}
-                <div className="grid min-w-0 items-center gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:gap-12 xl:gap-16">
-                    {/* Left: Introduction and contact details */}
+                {/* Main layout */}
+                <div className="grid min-w-0 items-start gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
+
+                    {/* Left column */}
                     <motion.div
-                        initial={{ opacity: 0, x: -25 }}
+                        initial={{ opacity: 0, x: -24 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, amount: 0.1 }}
                         transition={{ duration: 0.55, ease: "easeOut" }}
-                        className="min-w-0 lg:pr-2"
+                        className="min-w-0 lg:pt-1"
                     >
-                        <div className="mb-4 inline-flex items-center gap-2">
-                            <span className="h-2 w-2 rounded-full bg-emerald-500" />
-                            <span
-                                className={`text-xs font-medium ${darkMode ? "text-gray-400" : "text-slate-600"
-                                    }`}
-                            >
-                                Available for new opportunities
-                            </span>
-                        </div>
-
                         <h3
-                            className={`max-w-md text-2xl font-bold leading-tight sm:text-3xl lg:text-4xl ${headingText}`}
+                            className={`max-w-md text-2xl font-semibold leading-snug sm:text-3xl ${headingText}`}
                         >
-                            Let's make your next idea happen.
+                            Let's create something meaningful together.
                         </h3>
 
                         <p
-                            className={`mt-4 max-w-md text-sm leading-6 sm:text-base sm:leading-7 ${mutedText}`}
+                            className={`mt-4 max-w-md text-sm leading-7 ${mutedText}`}
                         >
-                            Whether it's a website, a web application, or a
-                            creative project, I'm ready to listen, collaborate,
-                            and build something meaningful with you.
+                            I'm always open to interesting collaborations,
+                            professional connections, and opportunities to
+                            build useful digital experiences.
                         </p>
 
-                        {/* Email */}
-                        <a
-                            href="mailto:josasofure@gmail.com"
-                            className="group mt-6 inline-flex max-w-full items-center gap-3 rounded-lg py-2 transition-colors hover:text-indigo-500"
-                        >
-                            <span
-                                className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${iconSurface}`}
+                        {/* Contact details */}
+                        <div className="mt-9 space-y-6">
+
+                            <a
+                                href="mailto:josasofure@gmail.com"
+                                className="group flex items-center gap-4"
                             >
-                                <Mail size={18} />
-                            </span>
-
-                            <span className="min-w-0">
-                                <span className="block text-[10px] font-medium uppercase tracking-[0.15em] text-slate-400">
-                                    Email address
-                                </span>
-
                                 <span
-                                    className={`mt-1 block break-all text-sm font-semibold ${darkMode ? "text-gray-200" : "text-slate-800"
+                                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg ${darkMode
+                                            ? "bg-[#202327] text-gray-300"
+                                            : "bg-[#ECEEF0] text-[#343940]"
                                         }`}
                                 >
-                                    josasofure@gmail.com
+                                    <Mail size={18} />
                                 </span>
-                            </span>
 
-                            <ArrowUpRight
-                                size={16}
-                                className="ml-auto shrink-0 text-slate-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                            />
-                        </a>
+                                <span className="min-w-0">
+                                    <span
+                                        className={`block text-xs ${darkMode ? "text-gray-500" : "text-[#858A91]"
+                                            }`}
+                                    >
+                                        Email
+                                    </span>
 
-                        {/* Location */}
-                        <div className="mt-3 flex items-center gap-3">
-                            <span
-                                className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${iconSurface}`}
-                            >
-                                <MapPin size={18} />
-                            </span>
+                                    <span
+                                        className={`mt-1 block break-all text-sm font-medium transition-colors group-hover:text-indigo-500 ${darkMode ? "text-gray-200" : "text-[#30343A]"
+                                            }`}
+                                    >
+                                        josasofure@gmail.com
+                                    </span>
+                                </span>
 
-                            <div>
-                                <p className="text-[10px] font-medium uppercase tracking-[0.15em] text-slate-400">
-                                    Location
-                                </p>
+                                <ArrowUpRight
+                                    size={16}
+                                    className="ml-auto shrink-0 text-gray-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                                />
+                            </a>
 
-                                <p
-                                    className={`mt-1 text-sm font-semibold ${darkMode ? "text-gray-200" : "text-slate-800"
+                            <div className="flex items-center gap-4">
+                                <span
+                                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg ${darkMode
+                                            ? "bg-[#202327] text-gray-300"
+                                            : "bg-[#ECEEF0] text-[#343940]"
                                         }`}
                                 >
-                                    Nigeria · Available worldwide
-                                </p>
+                                    <MapPin size={18} />
+                                </span>
+
+                                <span>
+                                    <span
+                                        className={`block text-xs ${darkMode ? "text-gray-500" : "text-[#858A91]"
+                                            }`}
+                                    >
+                                        Location
+                                    </span>
+
+                                    <span
+                                        className={`mt-1 block text-sm font-medium ${darkMode ? "text-gray-200" : "text-[#30343A]"
+                                            }`}
+                                    >
+                                        Nigeria
+                                    </span>
+                                </span>
                             </div>
                         </div>
 
                         {/* Social links */}
-                        <div className="mt-6 flex items-center gap-3">
-                            <a
-                                href="https://github.com/JeffJG-maker"
-                                target="_blank"
-                                rel="noreferrer"
-                                aria-label="GitHub"
-                                className={socialStyles}
-                            >
-                                <FaGithub size={18} />
-                            </a>
-
-                            <a
-                                href="https://www.linkedin.com/in/nosa-orhue-osasofure-jeffrey-43332530a/"
-                                target="_blank"
-                                rel="noreferrer"
-                                aria-label="LinkedIn"
-                                className={socialStyles}
-                            >
-                                <FaLinkedin size={18} />
-                            </a>
-
-                            <span
-                                className={`ml-1 text-xs ${darkMode ? "text-gray-500" : "text-slate-500"
+                        <div className="mt-9">
+                            <p
+                                className={`mb-3 text-xs font-medium ${darkMode ? "text-gray-500" : "text-[#858A91]"
                                     }`}
                             >
-                                Find me online
-                            </span>
+                                Connect with me
+                            </p>
+
+                            <div className="flex items-center gap-3">
+                                <a
+                                    href="https://github.com/JeffJG-maker"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    aria-label="GitHub"
+                                    className={socialStyles}
+                                >
+                                    <FaGithub size={18} />
+                                </a>
+
+                                <a
+                                    href="https://www.linkedin.com/in/nosa-orhue-osasofure-jeffrey-43332530a/"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    aria-label="LinkedIn"
+                                    className={socialStyles}
+                                >
+                                    <FaLinkedin size={18} />
+                                </a>
+                            </div>
                         </div>
 
-                        {/* Direction toward the form */}
-                        <div className="mt-7 hidden items-center gap-3 lg:flex">
-                            <span
-                                className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${darkMode
-                                        ? "bg-white text-[#17191C]"
-                                        : "bg-[#17191C] text-white"
-                                    }`}
-                            >
-                                <ArrowRight size={17} />
-                            </span>
-
-                            <div
-                                className={`h-px w-16 xl:w-24 ${darkMode ? "bg-white/20" : "bg-slate-300"
-                                    }`}
-                            />
-
-                            <span
-                                className={`text-xs ${darkMode ? "text-gray-500" : "text-slate-500"
-                                    }`}
-                            >
-                                Tell me about your project
-                            </span>
+                        {/* Availability note */}
+                        <div
+                            className={`mt-9 flex items-center gap-2 text-xs ${darkMode ? "text-gray-500" : "text-[#858A91]"
+                                }`}
+                        >
+                            <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                            Available for new opportunities
                         </div>
                     </motion.div>
 
-                    {/* Right: Compact contact form */}
+                    {/* Right column: Form */}
                     <motion.form
-                        initial={{ opacity: 0, x: 25 }}
+                        initial={{ opacity: 0, x: 24 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, amount: 0.1 }}
                         transition={{
@@ -299,35 +280,29 @@ function Contact({ darkMode = false }) {
                             ease: "easeOut",
                         }}
                         onSubmit={handleSubmit}
-                        className={`min-w-0 rounded-2xl p-5 shadow-[0_12px_40px_rgba(15,23,42,0.05)] transition-colors duration-300 sm:p-7 lg:p-7 xl:p-8 ${darkMode
-                                ? "bg-[#191C20] shadow-[0_12px_40px_rgba(0,0,0,0.16)]"
+                        className={`min-w-0 rounded-xl p-5 shadow-[0_10px_40px_rgba(15,23,42,0.045)] transition-colors duration-300 sm:p-7 lg:p-8 ${darkMode
+                                ? "bg-[#191C20] shadow-[0_10px_40px_rgba(0,0,0,0.14)]"
                                 : "bg-white"
                             }`}
                     >
-                        <div className="mb-5">
-                            <p
-                                className={`text-[10px] font-semibold uppercase tracking-[0.18em] ${darkMode ? "text-gray-400" : "text-slate-500"
-                                    }`}
-                            >
-                                Start a project
-                            </p>
-
-                            <h3
-                                className={`mt-1.5 text-xl font-bold sm:text-2xl ${headingText}`}
-                            >
-                                Send me a message.
+                        <div className="mb-7">
+                            <h3 className={`text-xl font-semibold ${headingText}`}>
+                                Send a message
                             </h3>
 
-                            <p className={`mt-1.5 text-xs leading-5 ${mutedText}`}>
-                                I'll get back to you as soon as I can.
+                            <p className={`mt-2 text-sm ${mutedText}`}>
+                                Fill in the form below.
                             </p>
                         </div>
 
                         {/* Name and email */}
-                        <div className="grid min-w-0 gap-4 sm:grid-cols-2">
+                        <div className="grid min-w-0 gap-5 sm:grid-cols-2">
                             <div className="min-w-0">
-                                <label htmlFor="contact-name" className={labelStyles}>
-                                    Your name
+                                <label
+                                    htmlFor="contact-name"
+                                    className={labelStyles}
+                                >
+                                    Full name
                                 </label>
 
                                 <input
@@ -337,14 +312,17 @@ function Contact({ darkMode = false }) {
                                     autoComplete="name"
                                     value={formData.name}
                                     onChange={handleChange}
-                                    placeholder="John Doe"
+                                    placeholder="Enter Your Name"
                                     required
                                     className={fieldStyles}
                                 />
                             </div>
 
                             <div className="min-w-0">
-                                <label htmlFor="contact-email" className={labelStyles}>
+                                <label
+                                    htmlFor="contact-email"
+                                    className={labelStyles}
+                                >
                                     Email address
                                 </label>
 
@@ -355,7 +333,7 @@ function Contact({ darkMode = false }) {
                                     autoComplete="email"
                                     value={formData.email}
                                     onChange={handleChange}
-                                    placeholder="you@example.com"
+                                    placeholder="Enter Your Email Address"
                                     required
                                     className={fieldStyles}
                                 />
@@ -363,8 +341,11 @@ function Contact({ darkMode = false }) {
                         </div>
 
                         {/* Subject */}
-                        <div className="mt-4 min-w-0">
-                            <label htmlFor="contact-subject" className={labelStyles}>
+                        <div className="mt-5">
+                            <label
+                                htmlFor="contact-subject"
+                                className={labelStyles}
+                            >
                                 Subject
                             </label>
 
@@ -374,27 +355,30 @@ function Contact({ darkMode = false }) {
                                 type="text"
                                 value={formData.subject}
                                 onChange={handleChange}
-                                placeholder="What would you like to discuss?"
+                                placeholder="Subject of your message"
                                 required
                                 className={fieldStyles}
                             />
                         </div>
 
                         {/* Message */}
-                        <div className="mt-4 min-w-0">
-                            <label htmlFor="contact-message" className={labelStyles}>
-                                Your message
+                        <div className="mt-5">
+                            <label
+                                htmlFor="contact-message"
+                                className={labelStyles}
+                            >
+                                Message
                             </label>
 
                             <textarea
                                 id="contact-message"
                                 name="message"
-                                rows={3}
+                                rows={4}
                                 value={formData.message}
                                 onChange={handleChange}
-                                placeholder="Tell me a little about your project..."
+                                placeholder="Write your message here..."
                                 required
-                                className={`${fieldStyles} min-h-[90px] resize-y`}
+                                className={`${fieldStyles} min-h-[110px] resize-y`}
                             />
                         </div>
 
@@ -427,43 +411,14 @@ function Contact({ darkMode = false }) {
                         <button
                             type="submit"
                             disabled={isSending}
-                            className="group mt-5 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-indigo-600 px-5 py-3.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-60"
+                            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-indigo-600 px-5 py-3.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-60"
                         >
-                            {isSending ? "Sending message..." : "Send Message"}
+                            {isSending ? "Sending..." : "Send Message"}
 
-                            <Send
-                                size={15}
-                                className="transition-transform duration-200 group-hover:translate-x-0.5"
-                            />
+                            <Send size={15} />
                         </button>
-
-                        <p
-                            className={`mt-3 text-center text-[10px] leading-5 ${darkMode ? "text-gray-500" : "text-slate-400"
-                                }`}
-                        >
-                            Your details are only used to respond to your enquiry.
-                        </p>
                     </motion.form>
                 </div>
-
-                {/* Minimal footer */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.45, delay: 0.1 }}
-                    className={`mt-7 flex flex-col items-center justify-between gap-2 text-xs sm:flex-row ${darkMode ? "text-gray-500" : "text-slate-500"
-                        }`}
-                >
-                    <p>Have a great idea? Let's make it happen.</p>
-
-                    <a
-                        href="mailto:josasofure@gmail.com"
-                        className="inline-flex items-center gap-1 font-medium transition-colors hover:text-indigo-500"
-                    >
-                        Get in touch <ArrowUpRight size={14} />
-                    </a>
-                </motion.div>
             </div>
         </section>
     );
